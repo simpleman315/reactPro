@@ -1,0 +1,28 @@
+{
+  "name": "reactpro",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "babel-node tools/run bundle",
+    "build": "webpack",
+    "dev": "webpack-dev-server --devtool eval --progress --colors --content-base views"
+  },
+  "author": "wwq",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "config": "^1.21.0",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1",
+    "zepto": "^1.2.0"
+  },
+  "dependencies": {
+    "config": "^1.21.0"
+  }
+}

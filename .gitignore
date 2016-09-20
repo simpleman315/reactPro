@@ -1,0 +1,9 @@
+*.log
+.DS_Store
+
+.idea/
+.svn/
+.eslintcache
+
+public/assets
+node_modules
