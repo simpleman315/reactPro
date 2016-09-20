@@ -10,8 +10,9 @@ var webpackConfig  = {
 	},
 	
     output: {
-        path: path.resolve(__dirname, './build'),
-        filename: '[name].js'
+        path: path.resolve(__dirname, './public/assets/'),
+        filename: '[name].js',
+		publicPath: prod ? '//static.seeyouyima.com/data.tataquan.com/[hash:8]/' : 'http://127.0.0.1:8080/public/assets/'
     },
 	
 	resolve: {
@@ -42,7 +43,7 @@ function ConfiPlugin() {}
 ConfiPlugin.prototype.apply = function(compiler) {
   compiler.plugin('emit', function(compilation, callback) {
     var hash = compilation.hash.substr(0, 8);
-    var publicPath = prod ? '//static.seeyouyima.com/data.tataquan.com/' + hash + '/' : 'http://127.0.0.1:8080/static/dist/';
+    var publicPath = prod ? '//static.seeyouyima.com/' + hash + '/' : 'http://127.0.0.1:8080/public/assets/';
     var htmlMap = getHtml();
     htmlMap.forEach(function(name) {
       fs.readFile(name, 'utf-8', function(error, data) {

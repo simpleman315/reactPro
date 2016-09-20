@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bundle": "babel-node tools/run bundle",
     "build": "webpack",
-    "dev": "webpack-dev-server --devtool eval --progress --colors --content-base views"
+	"deploy": "set NODE_ENV=production&&webpack -p --progress --colors",
+    "dev": "webpack-dev-server --devtool eval --progress --colors"
   },
-  "author": "wwq",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "babel-loader": "^6.2.5",
