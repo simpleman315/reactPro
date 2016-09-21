@@ -2,6 +2,7 @@ var config = require('./config');
 var path = require('path');
 var fs = require('fs');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var prod = process.env.NODE_ENV === 'production';
 var webpackConfig  = {
     entry: {
@@ -28,10 +29,15 @@ var webpackConfig  = {
                     presets: ['es2015', 'react']
                 }
 
-            }
+            },
+			{
+				test: /\.css$/,
+				loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+		    }
         ]
     },
     plugins: [
+		new ExtractTextPlugin('public/css/[name].css'),
         new webpack.HotModuleReplacementPlugin(),
 		new ConfiPlugin()
     ],
