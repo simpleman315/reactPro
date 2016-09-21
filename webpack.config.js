@@ -11,7 +11,7 @@ var webpackConfig = {
     },
 
     output: {
-        path: path.resolve(__dirname, './public/assets/'),
+        path: path.join(__dirname, './public/assets/', (prod ? '[hash:8]/' : '')),
         filename: 'js/[name].js',
         publicPath: prod ? '//static.seeyouyima.com/data.tataquan.com/[hash:8]/' : 'http://127.0.0.1:8080/public/assets/'
     },
@@ -44,23 +44,8 @@ var webpackConfig = {
             test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
             loader: 'url?limit=10000&mimetype=image/svg+xml'
         }, {
-            test: /\.gif/,
-            loader: 'url-loader?limit=10000&mimetype=image/gif'
-        }, {
-            test: /\.jpg/,
-            loader: 'url-loader?limit=10000&mimetype=image/jpg'
-        }, {
-            test: /\.png/,
-            exclude: /(images)/,
-            loader: 'url-loader?limit=10000&mimetype=image/png'
-        }, {
-            test: /\.png$/,
-            include: /(images)/,
-            loader: 'file-loader?name=/images/[name].[ext]'
-        }, {
-            test: /\.ico$/,
-            include: /(images)/,
-            loader: 'url-loader?limit=10000&mimetype=image/x-icon'
+            test: /\.(png|svg|gif|jpe?g|icon?)$/,
+            loader: 'url-loader?limit=8192&name=img/[name].[ext]'
         }, {
             test: /[\/\\]node_modules[\/\\]some-module[\/\\]index\.js$/,
             loader: 'imports?this=>window'
